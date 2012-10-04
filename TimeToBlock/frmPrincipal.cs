@@ -43,7 +43,7 @@ namespace TimeToBlock
             {
                 this.btnPausePlay.Tag = "PLAY";
                 this.btnPausePlay.Text = "Continuar";
-                
+
                 this.dataDaPausa = DateTime.Now;
                 this.timerBloqueio.Enabled = false;
             }
@@ -53,7 +53,15 @@ namespace TimeToBlock
                 this.btnPausePlay.Text = "Pause";
 
                 var tempoEmPausa = DateTime.Now - this.dataDaPausa;
-                this.dataDoUltimoBloqueio = this.dataDoUltimoBloqueio.AddMinutes(tempoEmPausa.Minutes);
+                bool tempoPausadoMuitoLongo=tempoEmPausa.Minutes > (intervaloDeBloqueio / 2);
+                if (tempoPausadoMuitoLongo)
+                {
+                    this.dataDoUltimoBloqueio = DateTime.Now;
+                }
+                else
+                {
+                    this.dataDoUltimoBloqueio = this.dataDoUltimoBloqueio.AddMinutes(tempoEmPausa.Minutes);
+                }
                 this.timerBloqueio.Enabled = true;
             }
         }
