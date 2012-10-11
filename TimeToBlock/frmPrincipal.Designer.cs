@@ -39,6 +39,7 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.timerBloqueio = new System.Windows.Forms.Timer(this.components);
             this.btnPausePlay = new System.Windows.Forms.Button();
+            this.lblIdle = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.txtIntervaloBloqueio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDuracaoBloqueio)).BeginInit();
             this.SuspendLayout();
@@ -140,6 +141,15 @@
             this.btnPausePlay.UseVisualStyleBackColor = true;
             this.btnPausePlay.Click += new System.EventHandler(this.btnPausePlay_Click);
             // 
+            // lblIdle
+            // 
+            this.lblIdle.AutoSize = true;
+            this.lblIdle.Location = new System.Drawing.Point(1, 154);
+            this.lblIdle.Name = "lblIdle";
+            this.lblIdle.Size = new System.Drawing.Size(35, 13);
+            this.lblIdle.TabIndex = 8;
+            this.lblIdle.Text = "idle??";
+            // 
             // frmPrincipal
             // 
             this.AcceptButton = this.btnAplicar;
@@ -147,6 +157,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(314, 184);
+            this.Controls.Add(this.lblIdle);
             this.Controls.Add(this.btnPausePlay);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.label3);
@@ -181,6 +192,7 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Timer timerBloqueio;
         private System.Windows.Forms.Button btnPausePlay;
+        private System.Windows.Forms.Label lblIdle;
     }
 }
 
