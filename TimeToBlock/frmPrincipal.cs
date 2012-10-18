@@ -11,6 +11,9 @@ namespace TimeToBlock
 {
     public partial class frmPrincipal : Form
     {
+        const string TXT_PLAY = "4";
+        const string TXT_PAUSE = ";";
+
         DateTime dataDaPausa = DateTime.Now;
         DateTime dataDoUltimoBloqueio = DateTime.Now;
         int intervaloDeBloqueio = 30;
@@ -46,14 +49,14 @@ namespace TimeToBlock
             if (estado.Equals("PAUSE"))
             {
                 this.btnPausePlay.Tag = "PLAY";
-                this.btnPausePlay.Text = "Continuar";
+                this.btnPausePlay.Text = TXT_PLAY;
 
                 Pausar();
             }
             else if (estado.Equals("PLAY"))
             {
                 this.btnPausePlay.Tag = "PAUSE";
-                this.btnPausePlay.Text = "Pause";
+                this.btnPausePlay.Text = TXT_PAUSE;
 
                 RetornarDoPausa();
             }
@@ -72,6 +75,12 @@ namespace TimeToBlock
                 dataDoUltimoBloqueio = DateTime.Now;
                 timerBloqueio.Enabled = true;
                 telaBloqueada = false;
+
+                // tempo menor de intervalo qnd bloqueio for interrompido pelo usuario
+                if (frmFullScreen.BloqueioInterrompido)
+                {
+                    dataDoUltimoBloqueio = DateTime.Now.AddMinutes(intervaloDeBloqueio / 2);
+                }
             }
         }
 
@@ -121,6 +130,11 @@ namespace TimeToBlock
                 this.dataDoUltimoBloqueio = this.dataDoUltimoBloqueio.AddMinutes(tempoEmPausa.Minutes);
             }
             this.timerBloqueio.Enabled = true;
+        }
+
+        private void btnDebug_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Debug mode...");
         }
     }
 }

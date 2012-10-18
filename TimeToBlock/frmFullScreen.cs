@@ -11,17 +11,20 @@ namespace TimeToBlock
 {
     public partial class frmFullScreen : Form
     {
+        public static bool BloqueioInterrompido { get; private set; }
+
         DateTime dataDoBloqueio;
         int duracaoDoBloqueio;
+        int contadorEsc = 0;
 
         private frmFullScreen()
         {
             InitializeComponent();
         }
-
         public static void Bloquear(int duracaoDoBloqueio)
         {
             var frmFullScreen = new frmFullScreen();
+            BloqueioInterrompido = false;
 
             frmFullScreen.dataDoBloqueio = DateTime.Now;
             frmFullScreen.duracaoDoBloqueio = duracaoDoBloqueio;
@@ -35,10 +38,27 @@ namespace TimeToBlock
             bool desbloquear = DateTime.Now > dataDoBloqueio.AddMinutes(duracaoDoBloqueio);
             if (desbloquear)
             {
-                timerDesbloqueio.Enabled = false;
-                this.Close();
-                this.Dispose();
+                this.FecharForm();
             }
+        }
+        private void frmFullScreen_KeyDown(object sender, KeyEventArgs e)
+        {
+            bool esc = e.KeyCode == Keys.Escape;
+            if (esc)
+                this.contadorEsc++;
+
+            if (this.contadorEsc >= 3)
+            {
+                BloqueioInterrompido = true;
+                this.FecharForm();
+            }
+        }
+
+        private void FecharForm()
+        {
+            this.timerDesbloqueio.Enabled = false;
+            this.Close();
+            this.Dispose();
         }
     }
 }

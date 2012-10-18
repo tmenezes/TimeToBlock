@@ -45,12 +45,14 @@
             this.ClientSize = new System.Drawing.Size(292, 273);
             this.ControlBox = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Name = "frmFullScreen";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "TMenezes - Time to Block - 10/2012";
             this.TopMost = true;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmFullScreen_KeyDown);
             this.ResumeLayout(false);
 
         }

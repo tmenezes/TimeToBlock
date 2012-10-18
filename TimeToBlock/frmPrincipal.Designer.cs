@@ -40,6 +40,7 @@
             this.timerBloqueio = new System.Windows.Forms.Timer(this.components);
             this.btnPausePlay = new System.Windows.Forms.Button();
             this.lblIdle = new System.Windows.Forms.Label();
+            this.btnDebug = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.txtIntervaloBloqueio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDuracaoBloqueio)).BeginInit();
             this.SuspendLayout();
@@ -132,12 +133,13 @@
             // 
             // btnPausePlay
             // 
-            this.btnPausePlay.Location = new System.Drawing.Point(202, 120);
+            this.btnPausePlay.Font = new System.Drawing.Font("Webdings", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.btnPausePlay.Location = new System.Drawing.Point(221, 112);
             this.btnPausePlay.Name = "btnPausePlay";
-            this.btnPausePlay.Size = new System.Drawing.Size(93, 23);
+            this.btnPausePlay.Size = new System.Drawing.Size(34, 31);
             this.btnPausePlay.TabIndex = 7;
             this.btnPausePlay.Tag = "PAUSE";
-            this.btnPausePlay.Text = "Pause";
+            this.btnPausePlay.Text = ";";
             this.btnPausePlay.UseVisualStyleBackColor = true;
             this.btnPausePlay.Click += new System.EventHandler(this.btnPausePlay_Click);
             // 
@@ -150,6 +152,18 @@
             this.lblIdle.TabIndex = 8;
             this.lblIdle.Text = "idle??";
             // 
+            // btnDebug
+            // 
+            this.btnDebug.Font = new System.Drawing.Font("Wingdings", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.btnDebug.Location = new System.Drawing.Point(261, 112);
+            this.btnDebug.Name = "btnDebug";
+            this.btnDebug.Size = new System.Drawing.Size(34, 31);
+            this.btnDebug.TabIndex = 9;
+            this.btnDebug.Tag = "PAUSE";
+            this.btnDebug.Text = "ÿ";
+            this.btnDebug.UseVisualStyleBackColor = true;
+            this.btnDebug.Click += new System.EventHandler(this.btnDebug_Click);
+            // 
             // frmPrincipal
             // 
             this.AcceptButton = this.btnAplicar;
@@ -157,6 +171,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(314, 184);
+            this.Controls.Add(this.btnDebug);
             this.Controls.Add(this.lblIdle);
             this.Controls.Add(this.btnPausePlay);
             this.Controls.Add(this.btnCancelar);
@@ -193,6 +208,7 @@
         private System.Windows.Forms.Timer timerBloqueio;
         private System.Windows.Forms.Button btnPausePlay;
         private System.Windows.Forms.Label lblIdle;
+        private System.Windows.Forms.Button btnDebug;
     }
 }
 
